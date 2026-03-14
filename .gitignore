@@ -1,0 +1,25 @@
+# Script de compilação
+build-latex.sh
+
+# LaTeX temporary files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.loq
+*.lot
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.run.xml
+*.bcf
+
+# PDF output
+*.pdf
