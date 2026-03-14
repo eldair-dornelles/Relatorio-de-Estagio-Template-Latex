@@ -1,6 +1,3 @@
-# Script de compilação
-build-latex.sh
-
 # LaTeX temporary files
 *.aux
 *.bbl
@@ -20,6 +17,3 @@ build-latex.sh
 *.synctex.gz
 *.run.xml
 *.bcf
-
-# PDF output
-#*.pdf
