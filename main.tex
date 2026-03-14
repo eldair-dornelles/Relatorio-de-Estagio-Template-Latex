@@ -1,0 +1,311 @@
+%% =============================================================================
+%% Projeto Base - Relatório de Estágio / TCC com abnTeX2
+%% Customizado para a UNIJUÍ
+%% Template desenvolvido e mantido por Prof. Eldair F. Dornelles
+%% Qualquer sugestão de melhoria será bem vinda, 
+%% Contato pelo e-mail: eldair.dornelles@unijui.edu.br
+%% =============================================================================
+
+\documentclass[
+    12pt,               % tamanho da fonte
+    oneside,            % para impressão frente e verso (use oneside para apenas frente)
+    a4paper,            % tamanho do papel
+    chapter=TITLE,      % títulos de capítulos em maiúsculas
+    section=TITLE,      % títulos de seções em maiúsculas
+    english,            % idioma adicional para hifenização
+    brazil              % o último idioma é o principal do documento
+]{abntex2}
+
+% ==============================================================================
+% PACOTES ESSENCIAIS
+% ==============================================================================
+
+% --- Codificação e fontes ---
+\usepackage[T1]{fontenc}        % seleção de códigos de fonte
+\usepackage[utf8]{inputenc}     % codificação do documento (conversão automática dos acentos)
+% \usepackage{lmodern}          % comentado: a fonte agora está definida no arquivo unijui.sty
+
+% --- Pacotes de citações ---
+\usepackage[brazilian,hyperpageref]{backref}  % páginas com as citações na bibl
+\usepackage[alf,bibjustif]{abntex2cite}        % citações padrão ABNT (bibjustif = referências justificadas)
+
+% --- Pacotes matemáticos ---
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% --- Pacotes gráficos ---
+\usepackage{graphicx}           % inclusão de gráficos
+% NOTA: NÃO usar \usepackage{float} com abnTeX2/memoir - conflita com \newfloat
+\usepackage{subfig}             % subfiguras
+\usepackage{pdfpages}           % inclusão de páginas PDF
+
+% --- Pacotes de tabelas ---
+\usepackage{booktabs}           % tabelas profissionais
+\usepackage{multirow}           % células que ocupam várias linhas
+\usepackage{longtable}          % tabelas longas (múltiplas páginas)
+\usepackage{array}              % personalização de colunas
+
+% --- Outros pacotes úteis ---
+\usepackage{microtype}          % melhorias de justificação
+\usepackage{indentfirst}        % indenta o primeiro parágrafo de cada seção
+\usepackage{color}              % controle de cores
+\usepackage{xcolor}             % cores avançadas
+\usepackage{listings}           % listagens de código-fonte
+\usepackage{enumitem}           % listas personalizadas
+\usepackage{lipsum}             % geração de texto fictício (remover na versão final)
+\usepackage{totcount}           % conta o total de floats (figuras, tabelas, etc.) no documento
+
+% --- Customizações UNIJUÍ ---
+\input{unijui.sty}
+
+% ==============================================================================
+% CONFIGURAÇÕES DO PACOTE BACKREF
+% ==============================================================================
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+    \ifcase #1 %
+        Nenhuma citação no texto.%
+    \or
+        Citado na página #2.%
+    \else
+        Citado #1 vezes nas páginas #2.%
+    \fi}%
+
+% ==============================================================================
+% CONFIGURAÇÕES DE LISTAGENS DE CÓDIGO
+% ==============================================================================
+\lstset{
+    basicstyle=\ttfamily\small,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=8pt,
+    backgroundcolor=\color{white},
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    frame=single,
+    rulecolor=\color{black},
+    tabsize=2,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red},
+    escapeinside={\%*}{*)},
+    literate=
+        {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+        {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+        {ã}{{\~a}}1 {õ}{{\~o}}1 {Ã}{{\~A}}1 {Õ}{{\~O}}1
+        {ç}{{\c{c}}}1 {Ç}{{\c{C}}}1
+        {ê}{{\^e}}1 {â}{{\^a}}1 {ô}{{\^o}}1
+}
+
+% ==============================================================================
+% DADOS DO TRABALHO
+% ==============================================================================
+
+% --- Informações do documento (preencher conforme o trabalho) ---
+\titulo{Título do Relatório}
+\autor{Nome do Estudante}
+\local{Ijuí/RS}
+\data{ANO DA ENTREGA}
+\orientador{Prof. Eldair F. Dornelles}
+\instituicao{%
+    Universidade Regional do Noroeste do\\[1mm]
+    Estado do Rio Grande do Sul
+}
+
+% --- Informações específicas da UNIJUÍ (definidas no unijui.sty) ---
+\campus{Ijuí}
+\curso{Ciência da Computação}
+\professordabanca{Prof(a). XXXX}
+\datadabanca{XX}{XXX}{XXXX}
+
+% --- Preâmbulo (texto da folha de rosto e aprovação) ---
+\preambulo{Relatório de Estágio Supervisionado apresentado ao Curso de
+xxxx da Universidade Regional do Noroeste do Estado do
+Rio Grande do Sul -- UNIJUÍ, como requisito parcial para obtenção do
+título de xxxx.}
+
+% --- Resumo e Abstract ---
+\resumoemportugues{%
+    Escreva aqui o resumo do trabalho em português. O resumo deve conter
+    entre 150 e 500 palavras e apresentar de forma concisa os objetivos,
+    a metodologia, os resultados e as conclusões do trabalho.
+}
+% Instrução: Use letras minúsculas para as palavras-chave, separe-as com ponto e vírgula (;) e encerre a última com um ponto (.)
+\palavraschaveemportugues{palavra-chave-1; palavra-chave-2; palavra-chave-3.}
+
+
+% ==============================================================================
+% CONFIGURAÇÕES DE APARÊNCIA DO PDF FINAL
+% ==============================================================================
+\makeatletter
+\hypersetup{
+    pdftitle={\@title},
+    pdfauthor={\@author},
+    pdfsubject={\imprimirpreambulo},
+    pdfcreator={LaTeX com abnTeX2},
+    pdfkeywords={abnt}{latex}{abntex}{abntex2}{relatório de estágio},
+    colorlinks=true,        % false: links em caixas; true: links coloridos
+    linkcolor=black,        % cor dos links internos
+    citecolor=black,        % cor dos links para bibliografias
+    filecolor=black,        % cor dos links de arquivos
+    urlcolor=black,         % cor dos links de URLs
+    bookmarksdepth=4
+}
+\makeatother
+
+% ==============================================================================
+% ESPAÇAMENTOS ENTRE LINHAS E PARÁGRAFOS
+% ==============================================================================
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% ==============================================================================
+% INÍCIO DO DOCUMENTO
+% ==============================================================================
+\begin{document}
+
+% Seleciona o idioma do documento
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases
+\frenchspacing
+
+% ==========================================================================
+% ELEMENTOS PRÉ-TEXTUAIS
+% ==========================================================================
+\pretextual
+
+% --- Capa ---
+\imprimircapa
+
+% --- Folha de rosto ---
+% (o * indica que haverá a ficha bibliográfica)
+\imprimirfolhaderosto
+
+% --- Ficha catalográfica (inserir PDF gerado pela biblioteca) ---
+% \begin{fichacatalografica}
+%     \includepdf{fig_ficha_catalografica.pdf}
+% \end{fichacatalografica}
+
+% --- Folha da banca ---
+\imprimirfolhadabanca
+
+% --- Agradecimentos ---
+\begin{agradecimentos}
+Agradeço a todos que contribuíram para a realização deste trabalho.
+
+\end{agradecimentos}
+
+% % --- Epígrafe ---
+% \begin{epigrafe}
+%     \vspace*{\fill}
+%     \begin{flushright}
+%         \textit{``A imaginação é mais importante que o conhecimento.''\\
+%         (Albert Einstein)}
+%     \end{flushright}
+% \end{epigrafe}
+
+% --- Resumo em português ---
+\begin{resumo}
+    \imprimirresumo
+    \par
+    \noindent \textbf{Palavras-chave}: \imprimirpalavraschave
+\end{resumo}
+
+% --- Lista de ilustrações (só aparece se houver figuras) ---
+% Na primeira compilação os contadores podem ser 0; compile 2x para resultado correto.
+\regtotcounter{figure}
+\ifnum\totvalue{figure}>0
+    \pdfbookmark[0]{\listfigurename}{lof}
+    \listoffigures*
+    \cleardoublepage
+\fi
+
+% --- Lista de quadros (só aparece se houver quadros) ---
+\regtotcounter{quadro}
+\ifnum\totvalue{quadro}>0
+    \pdfbookmark[0]{\listofquadrosname}{loq}
+    \listofquadros*
+    \cleardoublepage
+\fi
+
+% --- Lista de tabelas (só aparece se houver tabelas) ---
+\regtotcounter{table}
+\ifnum\totvalue{table}>0
+    \pdfbookmark[0]{\listtablename}{lot}
+    \listoftables*
+    \cleardoublepage
+\fi
+
+% --- Lista de abreviaturas e siglas ---
+\begin{siglas}
+    \item[ABNT] Associação Brasileira de Normas Técnicas
+    \item[TCC] Trabalho de Conclusão de Curso
+    \item[UNIJUÍ] Universidade Regional do Noroeste do Estado do Rio Grande do Sul
+\end{siglas}
+
+% --- Lista de símbolos ---
+\begin{simbolos}
+    \item[$ \Gamma $] Letra grega Gama
+    \item[$ \Lambda $] Lambda
+\end{simbolos}
+
+% --- Sumário ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+% ==========================================================================
+% ELEMENTOS TEXTUAIS
+% ==========================================================================
+\textual
+
+% --- Inclusão dos capítulos ---
+\input{capitulos/01-introducao}
+\input{capitulos/02-apresentacao-da-empresa}
+\input{capitulos/03-metodologia}
+\input{capitulos/04-revisao-bibliografica}
+\input{capitulos/05-desenvolvimento}
+\input{capitulos/06-consideracoes-finais}
+
+% ==========================================================================
+% ELEMENTOS PÓS-TEXTUAIS
+% ==========================================================================
+\postextual
+
+% --- Referências bibliográficas ---
+\bibliography{referencias}
+
+% --- Apêndices ---
+\begin{apendicesenv}
+    % %Imprime uma página indicando o início dos apêndices
+    % \partapendices
+
+    \input{apendices/apendice-a}
+\end{apendicesenv}
+
+% --- Anexos ---
+\begin{anexosenv}
+    % %Imprime uma página indicando o início dos anexos
+    % \partanexos
+
+    \input{anexos/anexo-a}
+\end{anexosenv}
+
+% --- Índice remissivo (opcional) ---
+% \phantompart
+% \printindex
+
+\end{document}
