@@ -1,4 +1,4 @@
-# Template LaTeX para Relatório de Estágio e TCC - UNIJUÍ
+# Template LaTeX para Relatório de Estágio - UNIJUÍ
 
 Este repositório contém um template LaTeX customizado para a elaboração de Relatórios de Estágio e Trabalhos de Conclusão de Curso (TCC) da **UNIJUÍ (Universidade Regional do Noroeste do Estado do Rio Grande do Sul)**.
 
